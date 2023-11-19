@@ -23,7 +23,7 @@ export const previousSong = () => {
 
 export const playSong = (context = false, offset) => {
   if (context && offset) {
-    axios.put('/me/player/play', {
+    axios.put('track', {
       context_uri: context,
       offset: { position: offset }
     });

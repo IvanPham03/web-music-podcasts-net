@@ -77,7 +77,7 @@ export const fetchSongs = () => {
   return async dispatch => {
     dispatch(fetchSongsPending());
     try {
-      const response = await axios.get('/me/tracks?limit=25');
+      const response = await axios.get('api/track?limit=25');
       dispatch(fetchSongsSuccess(response.data));
       return response.data;
     } catch (error) {

@@ -18,11 +18,12 @@ import withStatus from '../../../hoc/statusHoc';
 
 class SongsList extends Component {
   componentDidMount() {
+    // khi mount thì fetch songs
     this.fetchSongs();
   }
 
   fetchSongs() {
-    if (this.props.recently) {
+    if (this.props.recently) { // fetch bài hát gần đây
       this.props.fetchRecentSongs();
     } else {
       this.props.fetchSongs();
@@ -31,7 +32,7 @@ class SongsList extends Component {
 
   playTracks = (context, offset) => {
     const songs = this.props.songs.slice(offset).map(s => s.track.uri);
-    axios.put('/me/player/play', { uris: songs });
+    axios.put('/api/track', { uris: songs });
   };
 
   render = () => (
