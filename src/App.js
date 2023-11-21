@@ -15,7 +15,7 @@ const App = () => {
   const track = useSelector(state => state.track.value);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    dispatch(fetchTrack("01"));
+    dispatch(fetchTrack("30e3de05-5afb-4d64-b266-a6d1574f05ad"));
     setLoading(false); // nếu như loading bằng true thì spinner sẽ chạy
   }, []);
 
