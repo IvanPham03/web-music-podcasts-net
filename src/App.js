@@ -5,24 +5,24 @@ import Spinner from "./components/spinner/spinner";
 import LeftSection from "./containers/leftSection/leftSection";
 import MainSection from "./containers/mainSection/mainSection";
 import RightSection from "./containers/rightSection/rightSection";
-import Login from "./spotify/login";
 import { setToken, fetchUser } from "./store/actions/sessionActions";
-import "./App.css";
 import { fetchAudio } from "./redux-toolkit/slices/audioSlice";
+import "./App.css";
+
 // function component
 const App = () => {
   const dispatch = useDispatch();
   const track = useSelector(state => state.track.value);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    dispatch(fetchTrack("30e3de05-5afb-4d64-b266-a6d1574f05ad"));
+    dispatch(fetchTrack("cd715b8b-85dd-40a3-9628-85fb1c776a26"));
     setLoading(false); // nếu như loading bằng true thì spinner sẽ chạy
   }, []);
 
   // fetch file luu vao state
   useEffect(
     () => {
-      if(track.id !== undefined){
+      if (track.id !== undefined) {
         dispatch(fetchAudio(track.id));
       }
     },
@@ -30,13 +30,13 @@ const App = () => {
   );
 
   return (
-    <div className="app">
-      <Spinner loading={loading}>
-        <LeftSection />
-        <MainSection />
-        <RightSection />
-      </Spinner>
-    </div>
+      <div className="app">
+        <Spinner loading={loading}>
+          <LeftSection />
+          <MainSection />
+          <RightSection />
+        </Spinner>
+      </div>
   );
 };
 

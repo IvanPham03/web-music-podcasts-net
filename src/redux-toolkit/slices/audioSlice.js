@@ -40,20 +40,35 @@ const audioSlice = createSlice({
   }
 });
 
-export const fetchAudio = createAsyncThunk("audio/fetchAudio", async id => {
-  try {
-    const response = await axiosInstance.get(`api/Track/file/${id}`, {
-      responseType: "blob"
-    });
-    // Tạo URL từ Blob vì state không cho lưu blob
-    const audioURL = URL.createObjectURL(response.data);
+// export const fetchAudio = createAsyncThunk("audio/fetchAudio", async id => {
+//   try {
+//     const response = await axiosInstance.get(`api/Track/file/${id}`, {
+//       responseType: "blob"
+//     });
+//     // Tạo URL từ Blob vì state không cho lưu blob
+//     const audioURL = URL.createObjectURL(response.data);
     
-    return audioURL;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    throw error; // Ném lỗi để `fetchTrack.rejected` xử lý
-  }
-});
+//     return audioURL;
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//     throw error; // Ném lỗi để `fetchTrack.rejected` xử lý
+//   }
+// });
+
+export const fetchAudio = createAsyncThunk("audio/fetchAudio", async id => {
+    try {
+      const response = await axiosInstance.get(`tracks/file/AnhSeDuaEmVe-NQP-6309479.mp3`, {
+        responseType: "blob"
+      });
+      // Tạo URL từ Blob vì state không cho lưu blob
+      const audioURL = URL.createObjectURL(response.data);
+      console.log(audioURL);
+      return audioURL;
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      throw error; // Ném lỗi để `fetchTrack.rejected` xử lý
+    }
+  });
 
 export const { setAudio, togglePlaying, toggleLooping, toogleShuffling } = audioSlice.actions;
 export default audioSlice.reducer;

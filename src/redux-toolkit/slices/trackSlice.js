@@ -33,7 +33,9 @@ const trackSlice = createSlice({
 
 export const fetchTrack = createAsyncThunk("track/fetchTrack", async id => {
   try {
-    const response = await axiosInstance.get(`/api/Track/${id}`); // gọi instance và get endpoint
+    const response = await axiosInstance.get(`tracks/${id}`); // gọi instance và get endpoint
+
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error('Error fetching data:', error);
